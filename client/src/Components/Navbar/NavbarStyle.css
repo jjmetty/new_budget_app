@@ -5,11 +5,9 @@
     background-color: black;
     position: sticky;
     top: 0;
-}
-
-.nav-bar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logo-name{
@@ -18,7 +16,6 @@
 }
 
 .nav-button{
-    margin: auto;
     margin-right: 1rem;
     height: 1.5rem;
 }

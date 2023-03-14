@@ -3,11 +3,11 @@ import './NavbarStyle.css'
 
 export default function Navbar () {
     return(
-    <div className="nav-bar-container">
-        <div className="nav-bar">
-                <h3 className="logo-name">MyBudgetter</h3>
-                <button className="nav-button">Login</button>
+    <nav>
+        <div className="nav-bar-container">
+            <h3 className="logo-name">MyBudgetter</h3>
+            <button className="nav-button">Login</button>
         </div>
-    </div>
+    </nav>
     )
 }
