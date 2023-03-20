@@ -3,9 +3,9 @@ import './NavbarStyle.css'
 
 export default function Navbar () {
     return(
-    <nav>
+    <nav className="navbar">
         <div className="nav-bar-container">
-            <h3 className="logo-name">MyBudgetter</h3>
+            <h4 className="logo-name">MyBudgetter</h4>
             <button className="nav-button">Login</button>
         </div>
     </nav>

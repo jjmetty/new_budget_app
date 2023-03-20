@@ -1,5 +1,12 @@
-*{
-    box-sizing: border-box;    
+ *{
+    box-sizing: border-box;
 }
 
+.side-content-container{
+    display: flex;
+    /* margin-top: 3rem; */
+}
+
+
 /* background-color: #282c34; */
+

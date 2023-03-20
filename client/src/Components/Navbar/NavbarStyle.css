@@ -1,13 +1,11 @@
 .nav-bar-container{
-    border: 1px lightblue solid;
     width: 100vw;
     max-width: 100%;
     background-color: black;
-    position: sticky;
-    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 3rem;
 }
 
 .logo-name{
@@ -18,4 +16,13 @@
 .nav-button{
     margin-right: 1rem;
     height: 1.5rem;
+}
+
+.navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: black;
 }

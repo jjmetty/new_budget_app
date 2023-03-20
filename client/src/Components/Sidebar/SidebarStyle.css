@@ -1,4 +1,13 @@
+
 .sidebar-container{
+    align-self: flex-start;
     height: 100vh;
-    
+    background-color: green;
+    flex: 1;
+    position: sticky;
+    top: 0;
+}
+
+p{
+    color: white;
 }
