@@ -1,7 +1,7 @@
 import React from "react";
-import './MoneyStyle.css'
+import './ContentStyle.css'
 
-export default function Money(){
+export default function Content(){
     return(
         <div className="money-container">
            <h1>contnet</h1>
