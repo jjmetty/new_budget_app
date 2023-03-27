@@ -1,7 +1,7 @@
 .nav-bar-container{
     width: 100vw;
     max-width: 100%;
-    background-color: black;
+    background-color: #2C3333;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,11 +11,24 @@
 .logo-name{
     color: white;
     padding-left: 1rem;
+    cursor: pointer;
 }
 
 .nav-button{
     margin-right: 1rem;
-    height: 1.5rem;
+    border: 1px white solid;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 12px;
+    text-align: center;
+    transition: background-color .5s;
+}
+
+.nav-button:hover{
+    background-color: #0E8388;
+    border: 1px #0E8388 solid;
 }
 
 .navbar{
@@ -25,4 +38,11 @@
     right: 0;
     z-index: 9999;
     background-color: black;
+}
+
+.logo-name:hover{
+    background: rgb(46,79,79);
+    background: linear-gradient(90deg, rgba(46,79,79,1) 0%, rgba(14,131,136,1) 35%, rgba(203,228,222,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

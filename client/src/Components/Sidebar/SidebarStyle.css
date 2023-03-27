@@ -2,12 +2,43 @@
 .sidebar-container{
     align-self: flex-start;
     height: 100vh;
-    background-color: green;
+    background-color: #2E4F4F;
     flex: 1;
     position: sticky;
     top: 3rem;
+    box-shadow: 5px 0 5px -2px #888;
 }
 
-p{
+.sidebar-list{
+    list-style: none;
     color: white;
+    margin-top: 2rem;
+    height: 40%;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sidebar-links{
+    /* margin-top: 2rem; */
+    padding-right: 1rem;
+    align-items: center;
+    cursor: pointer;
+    transition: all .2s;
+ 
+}
+
+
+/* .sidebar-icons:hover{
+    transform: rotate(720deg);
+} */
+
+/* .sidebar-icons{
+    display: inline-block;
+    transition: transform 1s ease-in;
+} */
+
+.sidebar-links:hover{
+    color: #CBE4DE;
 }
