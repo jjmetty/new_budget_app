@@ -1,0 +1,6 @@
+.home-container{
+    border: 1px solid black;
+    height: 100vh;
+    min-height: 100%;
+    justify-content: center;
+}
