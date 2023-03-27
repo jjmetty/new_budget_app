@@ -30,15 +30,14 @@
 }
 
 
-/* .sidebar-icons:hover{
+.sidebar-icons:hover{
     transform: rotate(720deg);
-} */
+} 
 
-/* .sidebar-icons{
-    display: inline-block;
+.sidebar-icons{
     transition: transform 1s ease-in;
-} */
+}
 
 .sidebar-links:hover{
-    color: #CBE4DE;
+    color: #BABABA;
 }
