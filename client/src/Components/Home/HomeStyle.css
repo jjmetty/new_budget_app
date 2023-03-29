@@ -1,6 +1,13 @@
 .home-container{
-    border: 1px solid black;
+    border: 2px solid blueviolet;
     height: 100vh;
-    min-height: 100%;
-    justify-content: center;
+}
+
+.budget-graph-container{
+    margin: auto;
+    display: flex;
+    height: 15rem;
+    width: 95%;
+    border: 1px black solid;
+    margin-top: 1.5rem;
 }
