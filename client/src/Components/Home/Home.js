@@ -2,6 +2,7 @@ import React from "react";
 import '../Home/HomeStyle.css'
 import Budget from "../Budget/Budget";
 import HomeGraph from "../HomeGraph/HomeGraph";
+import ExpenseTable from "../ExpenseTable/ExpenseTable";
 
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
             <Budget />
             <HomeGraph />
         </div>
+        <ExpenseTable />
        </div>
     )
 }
