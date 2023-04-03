@@ -1,6 +1,6 @@
 import React from "react";
 import '../Home/HomeStyle.css'
-import Budget from "../Budget/Budget";
+import Budget from "../Budget/Budget"
 import HomeGraph from "../HomeGraph/HomeGraph";
 import ExpenseTable from "../ExpenseTable/ExpenseTable";
 
