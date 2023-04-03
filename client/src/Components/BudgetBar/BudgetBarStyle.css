@@ -1,0 +1,24 @@
+.budget-bar-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 4.5rem;
+    /* border: 1px solid black; */
+}
+
+.budget-bar{
+    height: 2rem;
+    width: 90%;
+    /* border: 1px solid black; */
+    margin: auto;
+    border-radius: 10px;
+    align-content: center;
+    margin-top: .5rem;
+    flex: .5;
+    background-color: #395B64;
+}
+
+.budget-bar-text{
+    text-align: center;
+    font-size: x-small;
+}
