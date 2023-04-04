@@ -10,7 +10,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Income</p>
                     <FontAwesomeIcon icon="fa-solid fa-money-bill" className="box-icon" style={{color:'#85bb65'}}/>
                 </div>
-                <h3>2000</h3>
+                <h3 className="budget-box-value">2000</h3>
             </div>
 
             <div className="budget-box">
@@ -18,7 +18,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Expenses</p>
                     <FontAwesomeIcon icon="fa-solid fa-arrow-trend-down" className="box-icon" style={{color:'#C40233'}}/>
                 </div>
-                <h3>1000</h3>
+                <h3 className="budget-box-value">1000</h3>
             </div>
 
             <div className="budget-box">
@@ -26,7 +26,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Remaining</p>
                     <FontAwesomeIcon icon="fa-solid fa-dollar-sign" className="box-icon" style={{color:'#CBE4DE'}}/>
                 </div>
-                <h3>500</h3>
+                <h3 className="budget-box-value">500</h3>
             </div>
         </div>
     )
