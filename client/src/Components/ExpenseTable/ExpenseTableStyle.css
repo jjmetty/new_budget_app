@@ -1,7 +1,33 @@
 .expense-table{
     margin: auto;
-    height: 500px;
+    /* min-height: 25rem; */
     width: 80%;
     margin-top: 3rem;
     border-radius: 10px;
+    border-collapse: collapse;
+    font-size: .9rem;
+    overflow: hidden;
+}
+
+.expense-table thead tr{
+    background: linear-gradient(90deg, rgba(46,79,79,1) 31%, rgba(14,131,136,1) 100%, rgba(203,228,222,1) 100%);
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+.expense-table th, .expense-table td{
+    padding: 12px 15px;
+}
+
+.expense-table tbody, tr{
+    border-bottom: 1px solid lightgrey;
+}
+
+.expense-table tr:nth-of-type(even){
+    background-color: #c6c6c6;
+}
+
+.expense-table tr:last-of-type{
+    border-bottom: 2px solid #0E8388;
 }

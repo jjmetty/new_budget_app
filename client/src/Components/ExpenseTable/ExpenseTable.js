@@ -2,6 +2,7 @@ import React from "react";
 import './ExpenseTableStyle.css'
 
 export default function ExpenseTable(){
+    //update even row background color
     return(
             <table className="expense-table content-box-shadow">
                 <thead>
@@ -14,7 +15,48 @@ export default function ExpenseTable(){
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                    </tr>
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                    </tr>
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                    </tr>
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                    </tr>
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                    </tr>
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                    </tr>
                 </tbody>
             </table>
     )
