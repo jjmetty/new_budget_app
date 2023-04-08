@@ -1,0 +1,9 @@
+.new-expense-button-container{
+    padding-bottom: .5rem;
+    cursor: pointer;
+}
+
+.new-expense-button-text{
+    font-size: smaller;
+    border-bottom: 1px solid black;
+}

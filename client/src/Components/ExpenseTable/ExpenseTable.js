@@ -3,6 +3,7 @@ import './ExpenseTableStyle.css'
 
 export default function ExpenseTable(){
     //update even row background color
+    //add new expense button and create a search bar on right side
     return(
             <table className="expense-table content-box-shadow">
                 <thead>
