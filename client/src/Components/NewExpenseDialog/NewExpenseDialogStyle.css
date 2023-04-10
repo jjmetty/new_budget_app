@@ -1,0 +1,54 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+    border: 1px solid black;
+    width: 300px;
+    height: 300px; 
+    background-color: #F9F6EE;
+    border-radius: 10px;
+    
+  }
+  
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: rgba(49,49,49,0.8);
+  }
+  
+  h3 {
+    text-align: center;
+  }
+  
+  .modal-content {
+      padding: 5px;
+      margin-top: 3px;
+  }
+  
+  .dialog-button-layout{
+    width: 95%;
+    margin: 5px;
+    display: flex;
+    /* justify-content: space-evenly; */
+  }
+  
+  .dialog-expense-label{
+    margin: 5px;
+  }
+  
+  .dialog-expense-button{
+    width: 35%;
+    margin-right: 15px;
+    /* make buttons float left */
+  }
+  
+  .no-outline:focus{
+    outline: none;
+  }

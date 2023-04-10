@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
+import axios from 'axios'
 import '../Home/HomeStyle.css'
 import Budget from "../Budget/Budget"
 import HomeGraph from "../HomeGraph/HomeGraph";
 import ExpenseTable from "../ExpenseTable/ExpenseTable";
 import TableFunctions from "../TableFunctions/TableFunctions"
-import axios from 'axios'
+import NewExpenseDialog from "../NewExpenseDialog/NewExpenseDialog";
 
 
 export default function Home() {
@@ -34,13 +35,14 @@ export default function Home() {
     }, []);
 
     return(
-       <div className="home-container">
+       <div className="home-container" >
         <div className="budget-graph-container">
             <Budget />
             <HomeGraph />
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
         <ExpenseTable Expenses = {apiExpenses}/>
+        {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense}/>}
        </div>
     )
 }
