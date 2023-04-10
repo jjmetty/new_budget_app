@@ -3,7 +3,7 @@ import '../Home/HomeStyle.css'
 import Budget from "../Budget/Budget"
 import HomeGraph from "../HomeGraph/HomeGraph";
 import ExpenseTable from "../ExpenseTable/ExpenseTable";
-import TableFunctions from "../TableFunctions/TableFunctions";
+import TableFunctions from "../TableFunctions/TableFunctions"
 
 
 export default function Home() {
