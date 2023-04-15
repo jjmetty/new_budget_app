@@ -4,26 +4,24 @@ import './NewExpenseDialogStyle.css'
 export default function NewExpenseDialog({setisCreatingExpense}){
     const isDisabled = false;
 
-
+    //make type and amount on same line, use flex with space around 
+    //make width for all inputs the same and space out type and amount and make type bigger
     return(
         <>
         <div className="modal"> 
-                <div className="section-top">
+                <div className="top-container">
+                <div className="vertical-bar"></div>
+                <h3 className="expense-text">New Expense</h3>
                 </div>
                 <form>
                 <div className="modal-content">
                 <div className="dialog-expense-label">
-                <label>Expense</label>
-                <input type='text' name ='expense' required/>
+                <input type='text' name ='expense' className="new-expense-input expense-input" placeholder="Expense" required/>
                 </div>
-                <div className="dialog-expense-label">
-                <label>Type</label>
-                <select className="expense-select" name='type' required>
+                <div className="dialog-expense-label grouped-amount-type">
+                <select className="expense-select new-expense-input" name='type' placeholder="Type" required>
                 </select>
-                </div>
-                <div className="dialog-expense-label">
-                <label>Amount</label>
-                <input type='number' name='amount' required/>
+                <input type='number' name='amount' className="new-expense-input expense-amount-input" placeholder="Amount" required/>
                 </div>
                 <div className="dialog-button-layout">
                 {isDisabled ? 
