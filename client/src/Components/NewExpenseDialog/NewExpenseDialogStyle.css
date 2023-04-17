@@ -31,10 +31,9 @@
   }
   
   .dialog-button-layout{
-    width: 95%;
-    margin: 5px;
+    margin-top: 5rem;
     display: flex;
-    /* justify-content: space-evenly; */
+    justify-content: space-around;
   }
   
   .dialog-expense-label{
@@ -46,8 +45,7 @@
   
   .dialog-expense-button{
     width: 35%;
-    margin-right: 15px;
-    /* make buttons float left */
+    margin: auto;
   }
   
   .no-outline:focus{
