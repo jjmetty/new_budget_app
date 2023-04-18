@@ -29,6 +29,13 @@
       margin-top: 3px;
       /* border: 1px solid black; */
   }
+
+  .input-container{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    /* border: 1px solid black; */
+  }
   
   .dialog-button-layout{
     margin-top: 5rem;
@@ -46,6 +53,17 @@
   .dialog-expense-button{
     width: 35%;
     margin: auto;
+    border-radius: 25px;
+    background-color: #2E4F4F;
+    color: white;
+    height: 1.7rem;
+    font-size: smaller;
+    border: none;
+    transition: background-color ease-out .3s;
+  }
+
+  .dialog-expense-button:hover{
+    background-color: #0E8388;
   }
   
   .no-outline:focus{

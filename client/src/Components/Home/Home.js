@@ -18,6 +18,8 @@ export default function Home() {
     //state for expenses 
     const [apiExpenses, setapiExpenses] = useState([]);
     const [isCreatingExpense, setisCreatingExpense] = useState(false);
+    const [newExpenseObject, setnewExpenseObject] = useState({expense: '', amount: '', type: '' });
+    
 
     //get expenses from api
     useEffect(() => {
@@ -34,6 +36,12 @@ export default function Home() {
         // eslint-disable-next-line
     }, []);
 
+    //update state on change for new expense
+    const handleNewExpenseChange = (e) => {
+        let {value, name} = e.target;
+        setnewExpenseObject({...newExpenseObject, [name]: value})
+    }
+
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
@@ -42,7 +50,7 @@ export default function Home() {
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
         <ExpenseTable Expenses = {apiExpenses}/>
-        {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense}/>}
+        {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} handleChange = {handleNewExpenseChange}/>}
        </div>
     )
 }
