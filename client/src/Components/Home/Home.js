@@ -15,10 +15,13 @@ export default function Home() {
         baseURL: "http://localhost:4000/api/"
     })
 
+    //list of type of expense
+    const types = ['Rent', 'Expenses', 'Investments']
+
     //state for expenses 
     const [apiExpenses, setapiExpenses] = useState([]);
     const [isCreatingExpense, setisCreatingExpense] = useState(false);
-    const [newExpenseObject, setnewExpenseObject] = useState({expense: '', amount: '', type: '' });
+    const [expenseObject, setexpenseObject] = useState({expense: '', amount: '', type: '' });
     
 
     //get expenses from api
@@ -39,8 +42,23 @@ export default function Home() {
     //update state on change for new expense
     const handleNewExpenseChange = (e) => {
         let {value, name} = e.target;
-        setnewExpenseObject({...newExpenseObject, [name]: value})
+        setexpenseObject({...expenseObject, [name]: value})
     }
+
+    const handleNewExpenseSubmit = async (e) =>{
+        e.preventDefault()
+        try{
+            let postExpense = await client.post('expenses', expenseObject)
+            setapiExpenses([...apiExpenses, postExpense.data])
+            setexpenseObject({expense: '', amount: '', type: '' })
+            setisCreatingExpense(false);
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    //create submit for new expense object and set up select data
+    //set value = to new expeonse object to reset values to 0
 
     return(
        <div className="home-container" >
@@ -50,7 +68,9 @@ export default function Home() {
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
         <ExpenseTable Expenses = {apiExpenses}/>
-        {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} handleChange = {handleNewExpenseChange}/>}
+        {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} 
+            handleChange = {handleNewExpenseChange} types = {types}
+            handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject}/>}
        </div>
     )
 }
