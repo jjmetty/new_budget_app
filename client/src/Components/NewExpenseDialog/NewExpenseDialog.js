@@ -4,6 +4,7 @@ import './NewExpenseDialogStyle.css'
 export default function NewExpenseDialog({setisCreatingExpense, handleChange, handleSubmit, expenseObject, types}){
     let isDisabled = false;
 
+    //create options for select tag for expense types
     const mapTypes = types.map((type, i) => (
         <option key={i} value={type}>{type}</option>
     ))

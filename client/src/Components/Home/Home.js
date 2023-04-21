@@ -45,6 +45,7 @@ export default function Home() {
         setexpenseObject({...expenseObject, [name]: value})
     }
 
+    //submit new expense
     const handleNewExpenseSubmit = async (e) =>{
         e.preventDefault()
         try{
@@ -57,9 +58,21 @@ export default function Home() {
         }
     }
 
-    //create submit for new expense object and set up select data
-    //set value = to new expeonse object to reset values to 0
+    //delete an expense
+    const handleExpenseDelete = async (id) =>{
+        try{
+            await client.delete(`expenses/${id}`)
+            const newExpenseList = apiExpenses.filter(expense => expense._id != id)
+            setapiExpenses(newExpenseList);
+        }catch(error){
+            console.log(error)
+        }
+    }
 
+    //add field for is manually added 
+    //add confirmation to delete 
+    //create inline editing in table
+    //add more to types list and sort alphabetically by creating function
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
@@ -67,7 +80,7 @@ export default function Home() {
             <HomeGraph />
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
-        <ExpenseTable Expenses = {apiExpenses}/>
+        <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete}/>
         {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} 
             handleChange = {handleNewExpenseChange} types = {types}
             handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject}/>}

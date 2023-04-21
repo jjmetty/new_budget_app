@@ -2,20 +2,24 @@ import React from "react";
 import './ExpenseTableStyle.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function ExpenseTable({Expenses}){
+export default function ExpenseTable({Expenses, handleDelete}){
 
     const formatDate = (date) =>{
         let dateFormat = new Date(date)
         return (dateFormat.getMonth() + 1) + '/' + dateFormat.getDate() + '/' +  dateFormat.getFullYear()
     }
 
+    const formatAmount = (amount) =>{
+        return amount.toFixed(2);
+    }
+
     const mapExpenses = Expenses?.map(expense =>
         <tr key={expense._id}>
             <td>{expense.expense}</td>
-            <td>{expense.amount}</td>
+            <td>${formatAmount(expense.amount)}</td>
             <td>{expense.type}</td>
             <td>{formatDate(expense.date)}</td>
-            <td><FontAwesomeIcon icon="fa-solid fa-trash" style={{cursor: 'pointer'}}/></td>
+            <td><FontAwesomeIcon icon="fa-solid fa-trash" style={{cursor: 'pointer'}} onClick={() => handleDelete(expense._id)}/></td>
         </tr>
     )
 
