@@ -31,3 +31,12 @@
 .expense-table tr:last-of-type{
     border-bottom: 2px solid #0E8388;
 }
+
+.edit-table-input{
+    background-color: transparent;
+    border: 0;
+}
+
+/* .edit-table-input:hover{
+    cursor: pointer;
+} */

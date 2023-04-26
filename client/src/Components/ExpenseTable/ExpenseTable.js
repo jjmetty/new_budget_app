@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function ExpenseTable({Expenses, handleDelete}){
 
+    //update hover of table row
+
     const formatDate = (date) =>{
         let dateFormat = new Date(date)
         return (dateFormat.getMonth() + 1) + '/' + dateFormat.getDate() + '/' +  dateFormat.getFullYear()
@@ -15,7 +17,7 @@ export default function ExpenseTable({Expenses, handleDelete}){
 
     const mapExpenses = Expenses?.map(expense =>
         <tr key={expense._id}>
-            <td>{expense.expense}</td>
+            <td><input type="text" value={expense.expense} className="edit-table-input"/></td>
             <td>${formatAmount(expense.amount)}</td>
             <td>{expense.type}</td>
             <td>{formatDate(expense.date)}</td>

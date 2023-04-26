@@ -73,6 +73,7 @@ export default function Home() {
     //add confirmation to delete 
     //create inline editing in table
     //add more to types list and sort alphabetically by creating function
+    //add current month above table
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
