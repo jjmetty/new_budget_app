@@ -18,10 +18,16 @@ export default function Home() {
     //list of type of expense
     const types = ['Rent', 'Expenses', 'Investments']
 
-    //state for expenses 
+    //expenses from db
     const [apiExpenses, setapiExpenses] = useState([]);
+
+    //creating expense
     const [isCreatingExpense, setisCreatingExpense] = useState(false);
     const [expenseObject, setexpenseObject] = useState({expense: '', amount: '', type: '' });
+
+    //editing expense
+    const [isEditingExpense, setisEditingExpense] = useState(false);
+    const [editingExpense, seteditingExpense] = useState({expense: '', amount: '', type: '' })
     
 
     //get expenses from api
@@ -40,9 +46,14 @@ export default function Home() {
     }, []);
 
     //update state on change for new expense
-    const handleNewExpenseChange = (e) => {
+    const handleExpenseChange = (e) => {
         let {value, name} = e.target;
-        setexpenseObject({...expenseObject, [name]: value})
+        if (isEditingExpense){
+            seteditingExpense({...editingExpense, [name]: value})
+        } else{
+            setexpenseObject({...expenseObject, [name]: value})
+        }
+ 
     }
 
     //submit new expense
@@ -69,6 +80,18 @@ export default function Home() {
         }
     }
 
+    //get editing expense
+    const getEditingExpense = async (id) =>{
+        try{
+            const response = await client.get(`expenses/${id}`)
+            setisEditingExpense(true);
+            seteditingExpense(response.data);
+            console.log(editingExpense)
+        } catch (error){
+            console.log(error);
+        }
+    }
+
     //add field for is manually added 
     //add confirmation to delete 
     //create inline editing in table
@@ -81,9 +104,10 @@ export default function Home() {
             <HomeGraph />
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
-        <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete}/>
+        <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete} handleChange={handleExpenseChange} setisEditingExpense = {setisEditingExpense}
+         getEditingExpense = {getEditingExpense} isEditingExpense={isEditingExpense} editingExpense = {editingExpense}/>
         {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} 
-            handleChange = {handleNewExpenseChange} types = {types}
+            handleChange = {handleExpenseChange} types = {types}
             handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject}/>}
        </div>
     )
