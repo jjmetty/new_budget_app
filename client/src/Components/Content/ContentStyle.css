@@ -2,5 +2,5 @@
 .content-container{
     flex: 7.5;
     /* background-color: #CBE4DE; */
-
+    overflow: auto;
 }

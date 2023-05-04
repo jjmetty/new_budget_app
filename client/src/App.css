@@ -8,6 +8,7 @@
 .side-content-container{
     display: flex;
     /* margin-top: 3rem; */
+    height: 100vh;
 }
 
 .content-box-shadow{

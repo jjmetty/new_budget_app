@@ -1,4 +1,3 @@
-
 .sidebar-container{
     align-self: flex-start;
     height: 100vh;
@@ -11,13 +10,11 @@
 }
 
 .sidebar-list{
-    width: 224px;
+    height: auto;
     padding: 0;
+    width: 100%;
     cursor: pointer;
     color: white;
-    position: fixed;
-    margin-top: 0;
-    /* border: 1px solid white; */
 }
 
 .sidebar-list .sidebar-links{
