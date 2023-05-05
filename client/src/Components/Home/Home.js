@@ -26,9 +26,7 @@ export default function Home() {
     const [expenseObject, setexpenseObject] = useState({expense: '', amount: '', type: '' });
 
     //editing expense
-    const [isEditingExpense, setisEditingExpense] = useState(false);
-    const [editingExpense, seteditingExpense] = useState({expense: '', amount: '', type: '' })
-    
+    const [editingExpense, seteditingExpense] = useState(0)
 
     //get expenses from api
     useEffect(() => {
@@ -48,12 +46,7 @@ export default function Home() {
     //update state on change for new expense
     const handleExpenseChange = (e) => {
         let {value, name} = e.target;
-        if (isEditingExpense){
-            seteditingExpense({...editingExpense, [name]: value})
-        } else{
             setexpenseObject({...expenseObject, [name]: value})
-        }
- 
     }
 
     //submit new expense
@@ -80,19 +73,34 @@ export default function Home() {
         }
     }
 
-    //get editing expense
+    //get current id to edit
     const getEditingExpense = async (id) =>{
         try{
             const response = await client.get(`expenses/${id}`)
-            setisEditingExpense(true);
-            seteditingExpense(response.data);
-            console.log(editingExpense)
-        } catch (error){
-            console.log(error);
+            seteditingExpense(response.data)
+        }catch(error){
+            console.log(error)
         }
     }
 
-    //add field for is manually added 
+    //on blur update expense
+    const handleEditSubmit = async (id) =>{
+        try{
+            let editChange = await client.patch(`expenses/${id}`, editingExpense)
+            let updatedExpenses = apiExpenses.map(expense => expense._id == id ? editChange.data : expense)
+            setapiExpenses(updatedExpenses)
+            seteditingExpense(0)
+        }catch(error){
+            console.log(error)
+        }
+    } 
+    
+
+    //onblur submit, filter out apiexpense where id equal to new state and update
+
+
+
+    //check inline editing stuff that i removed
     //add confirmation to delete 
     //create inline editing in table
     //add more to types list and sort alphabetically by creating function
@@ -104,8 +112,8 @@ export default function Home() {
             <HomeGraph />
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
-        <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete} handleChange={handleExpenseChange} setisEditingExpense = {setisEditingExpense}
-         getEditingExpense = {getEditingExpense} isEditingExpense={isEditingExpense} editingExpense = {editingExpense}/>
+        <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete} handleChange={handleExpenseChange} editingExpense = {editingExpense} 
+         getEditingExpense = {getEditingExpense} seteditingExpense = {seteditingExpense} handleEditSubmit = {handleEditSubmit}/>
         {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} 
             handleChange = {handleExpenseChange} types = {types}
             handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject}/>}

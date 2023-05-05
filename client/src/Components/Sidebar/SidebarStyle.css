@@ -15,6 +15,7 @@
     width: 100%;
     cursor: pointer;
     color: white;
+    margin-top: 0;
 }
 
 .sidebar-list .sidebar-links{
