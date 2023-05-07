@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import axios from 'axios'
 import '../Home/HomeStyle.css'
 import Budget from "../Budget/Budget"
@@ -27,6 +27,7 @@ export default function Home() {
 
     //editing expense
     const [editingExpense, seteditingExpense] = useState(0)
+
 
     //get expenses from api
     useEffect(() => {
@@ -86,10 +87,15 @@ export default function Home() {
     //on blur update expense
     const handleEditSubmit = async (id) =>{
         try{
-            let editChange = await client.patch(`expenses/${id}`, editingExpense)
-            let updatedExpenses = apiExpenses.map(expense => expense._id == id ? editChange.data : expense)
-            setapiExpenses(updatedExpenses)
-            seteditingExpense(0)
+            if (editingExpense){
+                let editChange = await client.patch(`expenses/${id}`, editingExpense)
+                let updatedExpenses = apiExpenses.map(expense => expense._id == id ? editChange.data : expense)
+                setapiExpenses(updatedExpenses)
+                seteditingExpense(0)
+            }else {
+                return;
+            }
+         
         }catch(error){
             console.log(error)
         }
@@ -108,7 +114,7 @@ export default function Home() {
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
-            <Budget />
+            <Budget apiExpenses = {apiExpenses}/>
             <HomeGraph />
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />

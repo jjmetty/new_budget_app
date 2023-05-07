@@ -1,8 +1,13 @@
 import React from "react";
 import './BudgetBoxesStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ExpenseTable from "../ExpenseTable/ExpenseTable";
 
-export default function BudgetBoxes(){
+export default function BudgetBoxes({apiExpenses}){
+    
+    //map through all expenses amount to get total $
+    const expenseTotal = apiExpenses.reduce((acc, cur) => acc + cur.amount, 0)
+
     return (
         <div className="budget-boxes-container">
             <div className="budget-box">
@@ -18,7 +23,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Expenses</p>
                     <FontAwesomeIcon icon="fa-solid fa-arrow-trend-down" className="box-icon" style={{color:'#C40233'}}/>
                 </div>
-                <h3 className="budget-box-value">1000</h3>
+                <h3 className="budget-box-value">$ {expenseTotal.toFixed(2)}</h3>
             </div>
 
             <div className="budget-box">

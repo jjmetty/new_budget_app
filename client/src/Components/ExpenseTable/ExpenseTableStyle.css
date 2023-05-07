@@ -32,10 +32,17 @@
     border-bottom: 2px solid #0E8388;
 }
 
-/* .edit-table-input{
+.edit-table-input{
     background-color: transparent;
-    border: 0;
-} */
+    outline: 0;
+    border-width: 0 0 2px;
+    margin-bottom: .5rem;
+    background-color: #F9F6EE;
+}
+
+.edit-table-input:focus{
+    border-color: #0E8388;
+}
 
 .real-expense:hover{
     cursor: pointer;
