@@ -34,7 +34,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Income</p>
                     <FontAwesomeIcon icon="fa-solid fa-money-bill" className="box-icon income-icon" style={{color:'#85bb65'}} onClick={() => testRef.current.focus()}/>
                 </div>
-                <input className="budget-box-value income-input" onChange={handleIncomeChange} value={income} ref={testRef}/>
+                <input className="budget-box-value income-input" type="number" onChange={handleIncomeChange} value={income} ref={testRef}/>
                 {/* <h3 className="budget-box-value" onChange={handleIncomeChange}>{income}</h3> */}
             </div>
 
