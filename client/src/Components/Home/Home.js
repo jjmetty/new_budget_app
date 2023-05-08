@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import axios from 'axios'
 import '../Home/HomeStyle.css'
 import Budget from "../Budget/Budget"
@@ -7,6 +7,7 @@ import ExpenseTable from "../ExpenseTable/ExpenseTable";
 import TableFunctions from "../TableFunctions/TableFunctions"
 import NewExpenseDialog from "../NewExpenseDialog/NewExpenseDialog";
 
+export const incomeContext = React.createContext();
 
 export default function Home() {
 
@@ -27,6 +28,11 @@ export default function Home() {
 
     //editing expense
     const [editingExpense, seteditingExpense] = useState(0)
+
+    //income
+    const [income, setIncome] = useState(0);
+    const [newIncome, setnewIncome] = useState(income);
+
 
 
     //get expenses from api
@@ -114,8 +120,10 @@ export default function Home() {
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
-            <Budget apiExpenses = {apiExpenses}/>
+        <incomeContext.Provider value={{value: [income, setIncome], value2: [newIncome, setnewIncome], value3: apiExpenses}}>
+            <Budget/>
             <HomeGraph />
+        </incomeContext.Provider>
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
         <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete} handleChange={handleExpenseChange} editingExpense = {editingExpense} 

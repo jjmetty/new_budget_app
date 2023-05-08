@@ -4,10 +4,10 @@ import BudgetBoxes from "../BudgetBoxes/BudgetBoxes";
 import BudgetBar from "../BudgetBar/BudgetBar";
 
 
-export default function Budget({apiExpenses}){
+export default function Budget(){
     return (
         <div className="budget-container content-box-shadow">
-            <BudgetBoxes apiExpenses = {apiExpenses}/>
+            <BudgetBoxes/>
             <BudgetBar />
         </div>
     )

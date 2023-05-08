@@ -31,19 +31,32 @@ export default function ExpenseTable({Expenses, handleDelete, editingExpense, ge
         console.log(editingExpense)
     }
 
-    
+    //save when enter or tab key pressed
+    const onEditKeyDown = (e) =>{
 
-    //make input just the bottom border 
+        //set to blur to save 
+        if (e.key === 'Enter' || e.key === 'Tab'){
+            e.target.blur();
+        }
+
+        //reset value to original
+        if (e.key === 'Escape'){
+            seteditingExpense(Expenses);
+        }
+    }
+
+    // console.log(refEdit);
+    //validate edit on submit
     //when press delete button add a check or x to confirm
     //add inline editing for other expense columns
 
     const mapExpenses = Expenses?.map(expense =>
         <tr key={expense._id}>
             { editingExpense._id === expense._id ? <td><input type="text" value={editingExpense.expense} className="edit-table-input" name="expense" 
-            onChange={handleEditOnChange} onBlur={ () => handleEditSubmit(expense._id)} ref={refEdit}/></td> 
+            onChange={handleEditOnChange} onBlur={ () => handleEditSubmit(expense._id)} ref={refEdit} onKeyDown={onEditKeyDown}/></td> 
             : <td className="real-expense" onClick={() => handleEditClick(expense._id)}>{expense.expense}</td> }
             { editingExpense._id === expense._id ? <td><input type="text" value={editingExpense.amount} className="edit-table-input" name="amount" 
-            onChange={handleEditOnChange} onBlur={ () => handleEditSubmit(expense._id)}/></td> 
+            onChange={handleEditOnChange} onBlur={ () => handleEditSubmit(expense._id)} onKeyDown={onEditKeyDown}/></td> 
             : <td className="real-expense" onClick={() => handleEditClick(expense._id)}>${formatAmount(expense.amount)}</td> }
             <td>{expense.type}</td>
             <td>{formatDate(expense.date)}</td>

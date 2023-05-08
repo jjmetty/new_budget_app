@@ -48,3 +48,17 @@
 .budget-box-value{
     margin-top: 1.5rem;
 }
+
+.income-input{
+    background-color: transparent;
+    border: 0;
+    text-align: center;
+    width: 100%;
+    font-family: 'Ubuntu';
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.income-icon{
+    cursor: pointer;
+}
