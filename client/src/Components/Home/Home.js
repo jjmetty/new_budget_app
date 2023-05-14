@@ -5,7 +5,7 @@ import Budget from "../Budget/Budget"
 import HomeGraph from "../HomeGraph/HomeGraph";
 import ExpenseTable from "../ExpenseTable/ExpenseTable";
 import TableFunctions from "../TableFunctions/TableFunctions"
-import NewExpenseDialog from "../NewExpenseDialog/NewExpenseDialog";
+import NewExpenseDialog from "../ExpenseDialog/ExpenseDialog";
 
 export const incomeContext = React.createContext();
 
@@ -27,25 +27,35 @@ export default function Home() {
     const [expenseObject, setexpenseObject] = useState({expense: '', amount: '', type: '' });
 
     //editing expense
-    const [editingExpense, seteditingExpense] = useState(0)
+    const [isEditingExpense,  setisEditingExpense] = useState(false);
+    const [editingExpense, seteditingExpense] = useState({expense: '', amount: '', type: '' })
 
     //income
     const [income, setIncome] = useState(0);
-    const [newIncome, setnewIncome] = useState(income);
+    
 
-
-
+    //find why api/income doesnt work
     //get expenses from api
     useEffect(() => {
         const getData = async () =>{
             try{
-                let response = await client.get('expenses');
-                setapiExpenses(response.data);
+                const urls = ['http://localhost:4000/api/expenses' , 'http://localhost:4000/api/income']
+                const requests = urls.map((url) => axios.get(url))
+                const responses = await Promise.all(requests)
+
+                setapiExpenses(responses[0].data);
+                setIncome(responses[1].data[0].income)
+
+                // let response = await client.get('expenses');
+                // let incomeData = await client.get('income');
+                // setapiExpenses(response.data);
+                // setIncome(incomeData.data)
             } catch(error){
                 console.log(error);
             }
 
         }
+
         getData();
         // eslint-disable-next-line
     }, []);
@@ -90,16 +100,19 @@ export default function Home() {
         }
     }
 
-    //on blur update expense
+
+    //update expense
     const handleEditSubmit = async (id) =>{
         try{
             if (editingExpense){
                 let editChange = await client.patch(`expenses/${id}`, editingExpense)
                 let updatedExpenses = apiExpenses.map(expense => expense._id == id ? editChange.data : expense)
                 setapiExpenses(updatedExpenses)
-                seteditingExpense(0)
+                setisEditingExpense(false);
+                seteditingExpense({expense: '', amount: '', type: '' })
             }else {
                 return;
+                
             }
          
         }catch(error){
@@ -107,10 +120,6 @@ export default function Home() {
         }
     } 
     
-
-    //onblur submit, filter out apiexpense where id equal to new state and update
-
-
 
     //check inline editing stuff that i removed
     //add confirmation to delete 
@@ -120,17 +129,23 @@ export default function Home() {
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
-        <incomeContext.Provider value={{value: [income, setIncome], value2: [newIncome, setnewIncome], value3: apiExpenses}}>
+        <incomeContext.Provider value={{value: [income, setIncome], value3: apiExpenses, value4: client}}>
             <Budget/>
             <HomeGraph />
         </incomeContext.Provider>
         </div>
         <TableFunctions setisCreatingExpense = {setisCreatingExpense} />
-        <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete} handleChange={handleExpenseChange} editingExpense = {editingExpense} 
-         getEditingExpense = {getEditingExpense} seteditingExpense = {seteditingExpense} handleEditSubmit = {handleEditSubmit}/>
+        <ExpenseTable Expenses = {apiExpenses} handleDelete = {handleExpenseDelete} 
+        getEditingExpense = {getEditingExpense} handleEditSubmit = {handleEditSubmit} setisEditingExpense = {setisEditingExpense}/>
         {isCreatingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} 
-            handleChange = {handleExpenseChange} types = {types}
-            handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject}/>}
+            handleChange = {handleExpenseChange} types = {types} isCreatingExpense ={isCreatingExpense}
+            handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject} 
+            isEditingExpense={isEditingExpense} setisEditingExpense = {setisEditingExpense} editingExpense={editingExpense}/>}
+        {isEditingExpense && <NewExpenseDialog setisCreatingExpense = {setisCreatingExpense} 
+            handleChange = {handleExpenseChange} types = {types} isCreatingExpense ={isCreatingExpense}
+            handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject} 
+            isEditingExpense={isEditingExpense} setisEditingExpense = {setisEditingExpense} editingExpense={editingExpense}
+            seteditingExpense={seteditingExpense} handleEditSubmit={handleEditSubmit}/>}
        </div>
     )
 }
