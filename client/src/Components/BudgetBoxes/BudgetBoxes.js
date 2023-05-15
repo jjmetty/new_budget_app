@@ -31,6 +31,9 @@ export default function BudgetBoxes(){
 
     const myIncome = income.map(i => <p key={i._id} className="budget-box-value income-input" onClick={() => clickEditIncome(i._id)}>$ {i.income}</p>)
 
+    //to create number to subtract from
+    const incomeValue = income.map(i => i.income);
+
 
     return (
         <div className="budget-boxes-container">
@@ -55,7 +58,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Remaining</p>
                     <FontAwesomeIcon icon="fa-solid fa-dollar-sign" className="box-icon" style={{color:'#CBE4DE'}}/>
                 </div>
-                <h3 className="budget-box-value">$ {1 - expenseTotal}</h3>
+                <h3 className="budget-box-value">$ {incomeValue[0] - expenseTotal}</h3>
             </div>
         </div>
     )
