@@ -1,5 +1,7 @@
 const express = require("express");
 const expense = require('../models/expense')
+const incomes = require('../models/income');
+const income = require("../models/income");
 const router = express.Router();
 
 //get all expenses
@@ -68,7 +70,58 @@ router.delete('/expenses/:id', async (req,res) =>{
         res.status(404).json({message: error.message})
     }
 })
- 
+
+//get income
+router.get('/income', async (req,res) => {
+    try{
+        const getIncome = await incomes.find();
+        res.json(getIncome); 
+    }catch(error){
+        res.status(500).json({message: error.message});
+    }
+})
+
+//create income
+router.post('/income', async (req,res) => {
+    const newIncome = new incomes({
+        income: req.body.income
+    })
+    try{
+        const addIncome =  await newIncome.save();
+        res.status(201).json(addIncome)
+    }catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
+//update income
+router.patch('/income/:id', async (req,res) =>{
+    try{
+        const updateIncome = await incomes.findOne({_id: req.params.id})
+
+        if (req.body.income){
+            updateIncome.income = req.body.income
+        }
+
+        await updateIncome.save()
+        res.send(updateIncome);
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
+//get one income by id
+router.get('/income/:id', async (req,res) =>{
+    try{
+        const oneIncome = await income.findOne({_id: req.params.id})
+        res.send(oneIncome);
+    }catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
+
+
+
 module.exports = router
 
 

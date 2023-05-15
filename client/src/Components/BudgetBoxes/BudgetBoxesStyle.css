@@ -50,16 +50,12 @@
 }
 
 .income-input{
-    background-color: transparent;
-    border: 0;
+    cursor: pointer;
     text-align: center;
     width: 100%;
     font-family: 'Ubuntu';
     font-size: 1.2rem;
     font-weight: bold;
-    -webkit-appearance: none;
 }
 
-.income-icon{
-    cursor: pointer;
-}
+

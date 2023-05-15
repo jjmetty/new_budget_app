@@ -6,6 +6,7 @@ import HomeGraph from "../HomeGraph/HomeGraph";
 import ExpenseTable from "../ExpenseTable/ExpenseTable";
 import TableFunctions from "../TableFunctions/TableFunctions"
 import NewExpenseDialog from "../ExpenseDialog/ExpenseDialog";
+import IncomeDialog from "../IncomeDialog/IncomeDialog";
 
 export const incomeContext = React.createContext();
 
@@ -31,7 +32,9 @@ export default function Home() {
     const [editingExpense, seteditingExpense] = useState({expense: '', amount: '', type: '' })
 
     //income
-    const [income, setIncome] = useState(0);
+    const [income, setIncome] = useState([]);
+    const [editingIncome, seteditingIncome] = useState({income: 0});
+    const [isEditingIncome, setisEditingIncome] = useState(false);
     
 
     //find why api/income doesnt work
@@ -44,7 +47,7 @@ export default function Home() {
                 const responses = await Promise.all(requests)
 
                 setapiExpenses(responses[0].data);
-                setIncome(responses[1].data[0].income)
+                setIncome(responses[1].data)
 
                 // let response = await client.get('expenses');
                 // let incomeData = await client.get('income');
@@ -119,17 +122,24 @@ export default function Home() {
             console.log(error)
         }
     } 
-    
 
-    //check inline editing stuff that i removed
+    //get income to edit
+    const getEditingIncome = async (id) =>{
+        try{
+            const response = await client.get(`income/${id}`)
+            seteditingIncome(response.data)
+        }catch(error){
+            console.log(error)
+        }
+    }
+    
     //add confirmation to delete 
-    //create inline editing in table
     //add more to types list and sort alphabetically by creating function
     //add current month above table
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
-        <incomeContext.Provider value={{value: [income, setIncome], value3: apiExpenses, value4: client}}>
+        <incomeContext.Provider value={{value: [income, setIncome], value3: apiExpenses, value4: client, value5: [isEditingIncome, setisEditingIncome], value6: getEditingIncome}}>
             <Budget/>
             <HomeGraph />
         </incomeContext.Provider>
@@ -146,6 +156,8 @@ export default function Home() {
             handleSubmit = {handleNewExpenseSubmit} expenseObject = {expenseObject} 
             isEditingExpense={isEditingExpense} setisEditingExpense = {setisEditingExpense} editingExpense={editingExpense}
             seteditingExpense={seteditingExpense} handleEditSubmit={handleEditSubmit}/>}
+        {isEditingIncome && <IncomeDialog isEditingIncome = {isEditingIncome} setisEditingIncome={setisEditingIncome} editingIncome = {editingIncome}
+            seteditingIncome= {seteditingIncome} getEditingIncome={getEditingIncome} client={client} income={income} setIncome = {setIncome}/>}
        </div>
     )
 }

@@ -1,41 +1,45 @@
-import React, {useContext, useRef} from "react";
+import React, {useContext, useRef, useState} from "react";
 import './BudgetBoxesStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ExpenseTable from "../ExpenseTable/ExpenseTable";
 import { incomeContext } from "../Home/Home";
 
 export default function BudgetBoxes(){
     
-    //future, add apiExpenses in context
-    //use state from homeJS for income and setIncome
-    const {value , value2, value3} = useContext(incomeContext)
+    
+    //use state from homeJS for income and apiExpenses
+    const {value ,value3, value4, value5, value6} = useContext(incomeContext)
     const [income, setIncome] = value;
-    const [newIncome, setnewIncome] = value2;
+    // const [newIncome, setnewIncome] = value2;
     const apiExpenses = value3;
+    const client = value4;
+    const [isEditingIncome, setisEditingIncome] = value5;
+    const getEditingIncome = value6;
 
-    const testRef = useRef();
+    //editing state
+    const [editingIncome, seteditingIncome] = useState(income)
 
-
-    //handle on change for new income
-    const handleIncomeChange = (e) =>{
-        let {value} = e.target
-        setIncome(value)
+    //when clicked, edit by getting id
+    const clickEditIncome = (id) =>{
+        getEditingIncome(id);
+        setisEditingIncome(true);
     }
+
+
 
     //map through all expenses amount to get total $
     const expenseTotal = apiExpenses.reduce((acc, cur) => acc + cur.amount, 0)
 
-    //create income and useContext to stop drilling down state
+    const myIncome = income.map(i => <p key={i._id} className="budget-box-value income-input" onClick={() => clickEditIncome(i._id)}>$ {i.income}</p>)
+
 
     return (
         <div className="budget-boxes-container">
             <div className="budget-box">
                 <div className="box-top budget-top">
                     <p className="box-text" style={{color: 'white'}}>Income</p>
-                    <FontAwesomeIcon icon="fa-solid fa-money-bill" className="box-icon income-icon" style={{color:'#85bb65'}} onClick={() => testRef.current.focus()}/>
+                    <FontAwesomeIcon icon="fa-solid fa-money-bill" className="box-icon income-icon" style={{color:'#85bb65'}} />
                 </div>
-                <input className="budget-box-value income-input" type="number" onChange={handleIncomeChange} value={income} ref={testRef}/>
-                {/* <h3 className="budget-box-value" onChange={handleIncomeChange}>{income}</h3> */}
+                {myIncome}
             </div>
 
             <div className="budget-box">
@@ -51,7 +55,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Remaining</p>
                     <FontAwesomeIcon icon="fa-solid fa-dollar-sign" className="box-icon" style={{color:'#CBE4DE'}}/>
                 </div>
-                <h3 className="budget-box-value">500</h3>
+                <h3 className="budget-box-value">$ {1 - expenseTotal}</h3>
             </div>
         </div>
     )

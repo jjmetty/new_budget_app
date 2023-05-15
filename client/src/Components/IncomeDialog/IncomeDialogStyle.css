@@ -1,0 +1,125 @@
+.income-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+    /* border: 1px solid black; */
+    width: 300px;
+    height: 240px; 
+    background-color: #F9F6EE;
+    border-radius: 10px;
+    
+  }
+  
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: rgba(49,49,49,0.8);
+  }
+  
+  
+  .modal-content {
+      padding: 5px;
+      margin-top: 3px;
+      /* border: 1px solid black; */
+  }
+
+  .input-container{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    /* border: 1px solid black; */
+  }
+  
+  .dialog-button-layout{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .dialog-expense-label{
+    /* margin: 5px; */
+    text-align: center;
+    /* border: 1px solid black; */
+    margin-top: .5rem;
+  }
+  
+  .dialog-expense-button{
+    width: 35%;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #2E4F4F;
+    color: white;
+    height: 1.7rem;
+    font-size: smaller;
+    border: none;
+    transition: background-color ease-out .3s;
+  }
+
+  .dialog-expense-button:hover{
+    background-color: #0E8388;
+  }
+  
+  .no-outline:focus{
+    outline: none;
+  }
+
+  .new-expense-input{
+    outline: 0;
+    border-width: 0 0 2px;
+    margin-bottom: .5rem;
+    background-color: #F9F6EE;
+  }
+
+.new-expense-input:focus{
+    border-color: #0E8388;
+}
+
+.top-container{
+    display: flex;
+    width: 85%;
+    /* border: 1px solid black; */
+    margin: auto;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.vertical-bar{
+    flex:1;
+    background-color: #2E4F4F;
+    height: 1.17em;
+    border-radius: 10px;
+    margin-top: 1.17em;
+    
+}
+
+.expense-text{
+    flex: 70;
+    margin-left: .5rem;
+}
+
+.grouped-amount-type{
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    margin-top: 1.5rem;
+}
+
+.expense-select{
+    width: 8rem;
+}
+
+.expense-amount-input{
+    width: 4.5rem;
+    /* margin-right: 1.5rem; */
+}
+
+.expense-input{
+    width: 84%;
+}
