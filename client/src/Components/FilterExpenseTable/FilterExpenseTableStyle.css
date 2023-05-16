@@ -2,8 +2,13 @@
     outline: 0;
     border-width: 0 0 2px;
     margin-bottom: .5rem;
+
 }
 
 .filter-expense-input:focus{
     border-color: #0E8388;
+}
+
+.filter-table-container{
+    margin-top: 1.5rem;
 }

@@ -1,6 +1,7 @@
 .new-expense-button-container{
     padding-bottom: .5rem;
     cursor: pointer;
+    margin-top: 1.5rem;
 }
 
 .new-expense-button-text{
