@@ -18,7 +18,7 @@ export default function Home() {
     })
 
     //list of type of expense
-    const types = ['Rent', 'Expenses', 'Investments']
+    const types = ['Rent', 'Expenses', 'Investments','Food', 'Entertainment', 'Groceries', 'Savings' ].sort();
 
     //expenses from db
     const [apiExpenses, setapiExpenses] = useState([]);

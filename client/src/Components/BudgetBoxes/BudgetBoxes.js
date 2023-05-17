@@ -58,7 +58,7 @@ export default function BudgetBoxes(){
                     <p className="box-text" style={{color: 'white'}}>Remaining</p>
                     <FontAwesomeIcon icon="fa-solid fa-dollar-sign" className="box-icon" style={{color:'#CBE4DE'}}/>
                 </div>
-                <h3 className="budget-box-value">$ {incomeValue[0] - expenseTotal}</h3>
+                <h3 className="budget-box-value">$ {incomeValue - expenseTotal}</h3>
             </div>
         </div>
     )
