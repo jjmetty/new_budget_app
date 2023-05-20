@@ -6,19 +6,33 @@
     /* border: 1px solid black; */
 }
 
-.budget-bar{
+
+.budget-bar-wrapper{
     height: 2rem;
     width: 90%;
     /* border: 1px solid black; */
     margin: auto;
     border-radius: 10px;
-    align-content: center;
     margin-top: .5rem;
     flex: .5;
-    background-color: #395B64;
+    background-color: #AEAEAE; 
+}
+
+.fill-bar{
+    height: 100%;
+    border-radius: inherit;
+    background-color: #48A14D;
+    text-align: right;
+    transition: width 1s ease-in-out;
 }
 
 .budget-bar-text{
     text-align: center;
     font-size: x-small;
+    
+}
+
+.inside-text{ 
+    color: white;
+
 }
