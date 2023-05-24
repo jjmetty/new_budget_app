@@ -134,12 +134,11 @@ export default function Home() {
     }
     
     //add confirmation to delete 
-    //add more to types list and sort alphabetically by creating function
-    //add current month above table
     return(
        <div className="home-container" >
         <div className="budget-graph-container">
-        <incomeContext.Provider value={{value: [income, setIncome], value3: apiExpenses, value4: client, value5: [isEditingIncome, setisEditingIncome], value6: getEditingIncome}}>
+        <incomeContext.Provider value={{value: [income, setIncome], value3: apiExpenses, value4: client, value5: [isEditingIncome, setisEditingIncome], 
+            value6: getEditingIncome, value7: types}}>
             <Budget/>
             <HomeGraph />
         </incomeContext.Provider>
