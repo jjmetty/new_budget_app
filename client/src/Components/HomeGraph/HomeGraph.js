@@ -41,24 +41,28 @@ export default function HomeGraph(){
         datasets: [{
             data: graphData,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(73, 180, 20, 0.2)',
-                'rgba(100, 50, 80, 0.2)'
+                'rgba(46, 204, 113, 0.7)',
+                'rgba(149, 165, 166, 0.7)',
+                'rgba(52, 152, 219, 0.7)',
+                'rgba(231, 76, 60, 0.7)',
+                'rgba(155, 89, 182, 0.7)',
+                'rgba(236, 112, 99, 0.7)',
+                'rgba(44, 62, 80, 0.7)',
+                'rgba(102, 204, 153, 0.7)',
+                'rgba(165, 105, 79, 0.7)',
+                'rgba(241, 196, 15, 0.7)'
               ],
               borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(73, 180, 20, 1)',
-                'rgba(100, 50, 80, 1)'
+                'rgba(46, 204, 113, 1)',
+                'rgba(149, 165, 166, 1)',
+                'rgba(52, 152, 219, 1)',
+                'rgba(231, 76, 60, 1)',
+                'rgba(155, 89, 182, 1)',
+                'rgba(236, 112, 99, 1)',
+                'rgba(44, 62, 80, 1)',
+                'rgba(102, 204, 153, 1)',
+                'rgba(165, 105, 79, 1)',
+                'rgba(241, 196, 15, 1)'
               ],
               borderWidth: 1,
         }]
@@ -66,21 +70,25 @@ export default function HomeGraph(){
 
     const options = {
         responsive: true,
-        maintainAspectRatio: false,
+        aspectRatio: 2.5,
         plugins: {
             legend: {
                 position: "right"
+            }
+        },
+        layout: {
+            padding: {
+                top: 10,
+                bottom: 10,
             }
         }
     }
 
     return (
         <div className="home-graph-container content-box-shadow">
-            <div className="graph-wrapper">
                 <Doughnut
                 data = {data} options={options} 
                 ></Doughnut>
-            </div>
         </div>
     )
 }
