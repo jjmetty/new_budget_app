@@ -8,36 +8,40 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function HomeGraph(){
 
-    const {value3, value7} = useContext(incomeContext)
+    const {value, value3, value7} = useContext(incomeContext)
+    const [income] = value;
     const apiExpenses = value3;
     const labels = value7;
 
     //shallow copy expenses to new variable
-    let copyExpenses = [...apiExpenses]
+    let copyExpenses = [...apiExpenses].sort((a,b) => a.type.localeCompare(b.type)); 
     //sort expenses alphabetically by type
-    let sortExpenses = copyExpenses.sort((a,b) => a.type.localeCompare(b.type));    
+    //let sortExpenses = copyExpenses.sort((a,b) => a.type.localeCompare(b.type));    
 
     let sumAmount = {}
 
     //loop through expense array and add all 
-    for (let obj of sortExpenses){
-        const {type, amount} = obj
-        if (sumAmount[type]){
-            sumAmount[type] += amount
-        }else{
-            sumAmount[type] = amount
-        }
-    }
+    copyExpenses.forEach(({ amount, type }) => {
+        sumAmount[type] = (sumAmount[type] || 0) + amount;
+      });
 
-    //labels sorted alphabetically
-    //.map(x => x + `${x.amount}`) add to show percentage of graph
-    let graphLabels = Object.keys(sumAmount);
+    
+    //get total expenses
+    // copyExpenses.reduce()
+
+    //add percentage to key
+    const graphLabel = Object.entries(sumAmount).map(([type, amount]) => {
+        const percentage = ((amount / income[0].income) * 100).toFixed(0);
+        return `${type} (${percentage}%)`;
+      });
+
+      console.log(income[0])
 
     //data sorted alphabetically
     let graphData = Object.values(sumAmount);
 
     const data ={
-        labels: graphLabels,
+        labels: graphLabel,
         datasets: [{
             data: graphData,
             backgroundColor: [
@@ -91,4 +95,4 @@ export default function HomeGraph(){
                 ></Doughnut>
         </div>
     )
-}
+} 
