@@ -28,10 +28,11 @@ export default function HomeGraph(){
     
     //get total expenses
     // copyExpenses.reduce()
+    const expenseTotal = copyExpenses.reduce((acc, cur) => acc + cur.amount, 0)
 
     //add percentage to key
     const graphLabel = Object.entries(sumAmount).map(([type, amount]) => {
-        const percentage = ((amount / income[0].income) * 100).toFixed(0);
+        const percentage = ((amount / expenseTotal) * 100).toFixed(0);
         return `${type} (${percentage}%)`;
       });
 
