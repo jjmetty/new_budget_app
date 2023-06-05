@@ -33,7 +33,7 @@ export default function BudgetBar(){
         </div>
         </div>
         <div className="budget-bar-text">
-            <p>{expenseTotal} / {incomeValue}</p>
+            <p>{expenseTotal.toFixed(2)} / {incomeValue}</p>
         </div>
         </div>
     )

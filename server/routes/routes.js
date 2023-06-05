@@ -14,6 +14,32 @@ router.get('/expenses', async (req,res) => {
     }
 })
 
+//get expenses from current month
+router.get('/currentMonthExpenses', async (req,res) => {
+    try{
+        
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1;
+        const currentYear = currentDate.getFullYear();
+
+        const startRange = new Date(currentYear, currentMonth - 1 ,1);
+        const endRange = new Date(currentYear, currentMonth, 0);
+
+        const query = {
+            date: {
+                $gte: startRange,
+                $lte: endRange,
+            },
+        };
+
+        const currentMonthExpenses = await expense.find(query);
+        res.json(currentMonthExpenses); 
+    }catch(error){
+        res.status(500).json({message: error.message});
+    }
+})
+
+
 //create expense
 router.post('/expenses', async (req,res) => {
     const newExpense = new expense({
