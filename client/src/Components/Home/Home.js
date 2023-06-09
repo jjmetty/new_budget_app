@@ -42,7 +42,7 @@ export default function Home() {
     useEffect(() => {
         const getData = async () =>{
             try{
-                const urls = ['http://localhost:4000/api/expenses' , 'http://localhost:4000/api/income']
+                const urls = ['http://localhost:4000/api/currentMonthExpenses' , 'http://localhost:4000/api/income']
                 const requests = urls.map((url) => axios.get(url))
                 const responses = await Promise.all(requests)
 
