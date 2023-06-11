@@ -1,0 +1,11 @@
+.login{
+    min-height: 100vh;
+    flex: 7.5;
+    text-align: center;
+}
+
+.creation{
+    min-height: 100vh;
+    flex: 7.5;
+    text-align: center;
+}

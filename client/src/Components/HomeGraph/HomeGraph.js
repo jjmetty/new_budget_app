@@ -36,7 +36,6 @@ export default function HomeGraph(){
         return `${type} (${percentage}%)`;
       });
 
-      console.log(income[0])
 
     //data sorted alphabetically
     let graphData = Object.values(sumAmount);

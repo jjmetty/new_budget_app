@@ -1,12 +1,15 @@
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Sidebar from './Components/Sidebar/Sidebar';
-import Content from './Components/Content/Content';import { library } from '@fortawesome/fontawesome-svg-core';
+import { library } from '@fortawesome/fontawesome-svg-core';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
-
-
-
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import Home from './Components/Home/Home';
+import LoginPage from './Components/LoginComponents/LoginPage';
+import Graph from './Components/GraphComponents/Graph';
+import Calendar from './Components/CalendarComponents/Calendar'
+import Report from './Components/ReportComponent/Report'
 
 function App() {
   const iconList = Object
@@ -16,14 +19,21 @@ function App() {
 
 library.add(...iconList)
   return(
-    
-    
     <>
     <Navbar />
     <div className='side-content-container'>
+    <Router>
     <Sidebar />
-    <Content />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/loginpage" element={<LoginPage />}></Route>
+          <Route path="/graphs" element={<Graph />}></Route>
+          <Route path="/reports" element={<Report />}></Route>
+          <Route path="/calendar" element={<Calendar />}></Route>
+        </Routes>
+    </Router>
     </div>
+ 
     </>
   )
 }
