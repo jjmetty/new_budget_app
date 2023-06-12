@@ -2,7 +2,6 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Sidebar from './Components/Sidebar/Sidebar';
 import { library } from '@fortawesome/fontawesome-svg-core';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import Home from './Components/Home/Home';
@@ -17,6 +16,7 @@ function App() {
   .filter(key => key !== "fas" && key !== "prefix" )
   .map(icon => Icons[icon])
 
+  //create active link styles
 library.add(...iconList)
   return(
     <>

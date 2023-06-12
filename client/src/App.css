@@ -5,6 +5,12 @@
     font-family: 'Ubuntu';
 }
 
+a:-webkit-any-link {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+
 .side-content-container{
     display: flex;
     /* margin-top: 3rem; */
