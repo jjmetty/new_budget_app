@@ -35,3 +35,8 @@ input::-webkit-inner-spin-button {
 
 /* background-color: #282c34; */
 
+.creation{
+        min-height: 100vh;
+        flex: 7.5;
+        text-align: center;
+}

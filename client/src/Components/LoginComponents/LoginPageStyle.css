@@ -1,11 +1,22 @@
-.login{
+.login-wrapper{
     min-height: 100vh;
     flex: 7.5;
     text-align: center;
+    background-color: #2C3333;
+    align-content: center;
 }
 
+.login-container{
+    height: 400px;
+    width: 400px;
+    border: 1px solid white;
+    margin: auto;
+    margin-top: 4rem;
+    border-radius: 10px;
+}
+/* 
 .creation{
     min-height: 100vh;
     flex: 7.5;
     text-align: center;
-}
+} */
