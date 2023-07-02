@@ -25,8 +25,8 @@ library.add(...iconList)
     <Router>
     <Sidebar />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/loginpage" element={<LoginPage />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/" element={<LoginPage />}></Route>
           <Route path="/graphs" element={<Graph />}></Route>
           <Route path="/reports" element={<Report />}></Route>
           <Route path="/calendar" element={<Calendar />}></Route>
