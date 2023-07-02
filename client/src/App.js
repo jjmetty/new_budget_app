@@ -30,6 +30,7 @@ library.add(...iconList)
           <Route path="/graphs" element={<Graph />}></Route>
           <Route path="/reports" element={<Report />}></Route>
           <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="*" element={<Home />}></Route>
         </Routes>
     </Router>
     </div>
